@@ -17,7 +17,17 @@ import {Switch} from '../switch'
 // 🐨 create a function called `useToggle` and move all the toggle logic to
 // that function then call `useToggle` in the Toggle function.
 
-function Toggle({onToggle}) {
+/*
+Mijn aantekeningen:
+===================
+Wat we hier hebben gedaan is een custom hook gemaakt.
+Als ik dit goed begrijp kan kan ik nu een ander "booleanachtig" component maken
+die ook kan togglen, maar er anders uitziet.
+Een custom hook is een function die andere hooks aanroept. Voor de rest is custom hook gewoon een
+function. Deze oefeneing was dus puur een refactor slag, niks specifieks React.
+*/
+
+function useToggle(onToggle) {
   const [on, setOn] = React.useState(false)
 
   function toggle() {
@@ -26,6 +36,11 @@ function Toggle({onToggle}) {
     onToggle(newOn)
   }
 
+  return [on, toggle]
+}
+
+function Toggle({onToggle}) {
+  const [on, toggle] = useToggle({onToggle})
   return <Switch on={on} onClick={toggle} />
 }
 

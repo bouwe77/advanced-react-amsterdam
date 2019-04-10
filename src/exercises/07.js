@@ -6,25 +6,24 @@ import {Switch} from '../switch'
 const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args))
 const noop = () => {}
 
-function toggleReducer(state, {type}) {
+function toggleReducer(state, {type, initialOn}) {
   switch (type) {
     case 'toggle': {
       return {on: !state.on}
     }
-    // 🐨 add a case for 'reset' that simply returns the "initialState"
-    // which you can get from the action.
+    case 'reset': {
+      return {on: initialOn}
+    }
     default: {
       throw new Error(`Unsupported type: ${type}`)
     }
   }
 }
 
-// 🐨 We'll need to add an option for `onReset` and `initialOn` here
-// 💰 you can default `onReset` to `noop` and `initialOn` to `false`
-function useToggle({onToggle = noop} = {}) {
-  // 🐨 create an initialState object with an on property that's set to the
-  // value of `initialOn` and pass that to useReducer as the initial value
-  const [{on}, dispatch] = React.useReducer(toggleReducer, {on: false})
+function useToggle({onToggle = noop, onReset = noop, initialOn = false} = {}) {
+  const initialState = {on: initialOn}
+
+  const [{on}, dispatch] = React.useReducer(toggleReducer, initialState)
 
   function toggle() {
     const newOn = !on
@@ -32,8 +31,10 @@ function useToggle({onToggle = noop} = {}) {
     onToggle(newOn)
   }
 
-  // 🐨 add a reset function here which dispatches a 'reset' type with your
-  // initialState object and calls `onReset` with the initialState.on value
+  function reset() {
+    dispatch({type: 'reset', initialOn})
+    onReset(initialState.on)
+  }
 
   function getTogglerProps({onClick, ...props} = {}) {
     return {
@@ -46,10 +47,18 @@ function useToggle({onToggle = noop} = {}) {
   return {
     on,
     toggle,
-    // 🐨 add your reset function here.
+    reset,
     getTogglerProps,
   }
 }
+
+/*
+Mijn aantekeningen:
+===================
+Als ik het goed heb begrepen is dat standaard reducer/action werk,
+maar dan met state via useState.
+De oplossing voor de Hannah 100 hieronder is gebruik van userRef. Eventueel even naar kijken...
+*/
 
 // 💯 What happens if the user of useToggle switches the `initialOn` state
 // during the lifetime of this component? What should happen? I would argue that

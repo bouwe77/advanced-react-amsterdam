@@ -36,11 +36,8 @@ function useToggle({onToggle = noop} = {}) {
     onToggle(newOn)
   }
 
-  // 🐨 instead of returning an array here, let's return an object that has
-  // the following properties: `on`, `toggle`, and `togglerProps`.
-  // 🐨 togglerProps should be an object that has `aria-pressed` and `onClick` properties:
-  // 💰 {'aria-pressed': on, onClick: toggle}
-  return [on, toggle]
+  const togglerProps = {'aria-pressed': on, onClick: toggle}
+  return {on, toggle, togglerProps}
 }
 
 ////////////////////////////////////////////////////////////////////

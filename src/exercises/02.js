@@ -41,7 +41,9 @@ function Toggle({onToggle, children}) {
 
   /*
 Mijn aantekeningen:
-Die twee linkjes bekijken reactchildren en cloneelement
+Die twee linkjes bekijken reactchildren en cloneelement.
+Verder zijn die 3 Toggle.On, Toggle.Off en Toggle.Button arrow functions. En ik weet niet waarom...
+Het gebruik van de components zit in de Usage function, daar zie je dat je ze nest zeg maar.
 */
 
   // 🐨 replace this with a call to React.Children.map and map each child to
@@ -55,14 +57,10 @@ Die twee linkjes bekijken reactchildren en cloneelement
 }
 
 // Accepts `on` and `children` props and returns `children` if `on` is true
-Toggle.On = function(on, children) {
-  return on ? children : null
-}
+Toggle.On = ({on, children}) => (on ? children : null)
 
 // Accepts `on` and `children` props and returns `children` if `on` is false
-Toggle.Off = function(on, children) {
-  return on ? null : children
-}
+Toggle.Off = ({on, children}) => (on ? null : children)
 
 // Accepts `on` and `toggle` props and returns the <Switch /> with those props.
 Toggle.Button = ({on, toggle}) => <Switch on={on} onClick={toggle} />

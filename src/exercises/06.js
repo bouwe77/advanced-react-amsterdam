@@ -30,7 +30,7 @@ function useToggle({onToggle = noop} = {}) {
     onToggle(newOn)
   }
 
-  function getTogglerProps(togglerProps, props) {
+  function getTogglerProps(togglerProps) {
     // 🐨 this function should return an object with the same properties as the
     // togglerProps object, except it should also accept a "props" object and
     // merge the two together.
@@ -38,7 +38,7 @@ function useToggle({onToggle = noop} = {}) {
     // the one we need applied.
     return {
       ...togglerProps,
-      onClick: callAll(props.onClick, toggle),
+      onClick: callAll(togglerProps.onClick, toggle),
       //onClick: toggle,
     }
   }

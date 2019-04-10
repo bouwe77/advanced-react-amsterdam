@@ -55,9 +55,9 @@ function useToggle({onToggle = noop, onReset = noop, initialOn = false} = {}) {
 /*
 Mijn aantekeningen:
 ===================
-Als ik het goed heb begrepen is dat standaard reducer/action werk,
+Als ik het goed heb begrepen is dit standaard reducer/action werk,
 maar dan met state via useState.
-De oplossing voor de Hannah 100 hieronder is gebruik van userRef. Eventueel even naar kijken...
+De oplossing voor de Hannah 100 hieronder is gebruik van useRef. Eventueel even naar kijken...
 */
 
 // 💯 What happens if the user of useToggle switches the `initialOn` state

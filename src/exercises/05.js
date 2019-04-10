@@ -40,6 +40,12 @@ function useToggle({onToggle = noop} = {}) {
   return {on, toggle, togglerProps}
 }
 
+/*
+Mijn aantekeningen:
+===================
+Hooks is een veel leuker alternatief voor render props :)
+*/
+
 ////////////////////////////////////////////////////////////////////
 //                                                                //
 //                 Don't make changes below here.                 //

@@ -40,13 +40,14 @@ function toggleReducer(state, {type, initialState}) {
   }
 }
 
-// 🐨 add a new option called `reducer` that defaults to `toggleReducer`
-function useToggle({onToggle = noop, onReset = noop, initialOn = false} = {}) {
+function useToggle({
+  onToggle = noop,
+  onReset = noop,
+  initialOn = false,
+  reducer = toggleReducer,
+} = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
-  // 🐨 instead of passing `toggleReducer` here, pass the `reducer` that's
-  // provided as an option
-  // ... and that's it! Don't forget to check the 💯 extra credit below!
-  const [{on}, dispatch] = React.useReducer(toggleReducer, initialState)
+  const [{on}, dispatch] = React.useReducer(reducer, initialState)
 
   function toggle() {
     const newOn = !on

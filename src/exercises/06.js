@@ -30,27 +30,23 @@ function useToggle({onToggle = noop} = {}) {
     onToggle(newOn)
   }
 
-  function getTogglerProps(togglerProps) {
+  function getTogglerProps({onClick, ...rest} = {}) {
     // 🐨 this function should return an object with the same properties as the
     // togglerProps object, except it should also accept a "props" object and
     // merge the two together.
     // 🦉 The trick here is you need to merge the onClick you're passed with
     // the one we need applied.
+
     return {
-      ...togglerProps,
-      onClick: callAll(togglerProps.onClick, toggle),
-      //onClick: toggle,
+      'aria-pressed': on,
+      onClick: callAll(onClick, toggle),
+      ...rest,
     }
   }
 
   return {
     on,
     toggle,
-    // 🐨 you can get rid of togglerProps. We'll just use the prop getter.
-    togglerProps: {
-      'aria-pressed': on,
-      onClick: toggle,
-    },
     getTogglerProps,
   }
 }
@@ -73,7 +69,7 @@ function Usage() {
       <button
         {...getTogglerProps({
           'aria-label': 'custom-button',
-          onClick: () => console.info('onButtonClick'),
+          onClick: () => console.log('onButtonClick'),
           id: 'custom-button-id',
         })}
       >

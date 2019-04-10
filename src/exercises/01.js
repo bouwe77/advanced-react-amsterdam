@@ -20,6 +20,18 @@ function Toggle({onToggle}) {
   //
   // Downshift bekijken, is van Kent
   //
+  // Simply React talk van Kent C. Dodds is wellicht ook interessant
+  // en AHA Programming blog post op kentcdodds.com
+  //
+  // Als ik overstap op Typescript, ga ik dan van functioneel programmeren
+  // naar OOP? Want dat zou ik jammer vinden.
+  //
+  // Kent zeg dat hij niet zo van Redux houdt. Meestal is het helemaal
+  // niet nodig om state op 1 plek te hebben.
+  // Het leek een oplossing voor prop drilling, zie blog post over van Kent: Application State Management.
+  // Prop drilling probem was er omdat je werd afgeraden om context te gebruiken.
+  // Tegenwooridg kun je context wel gebruiken en dan is hooks goed genoeg.
+  //
   function toggle() {
     const newOn = !on
     updateOn(newOn)

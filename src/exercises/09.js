@@ -13,6 +13,13 @@ import {Switch} from '../switch'
 // and `onChange` props of <input />. Your job is to make those props actually
 // control the state of `on` and call the `onChange` with the suggested chagnes.
 
+/*
+Mijn aantekeningen:
+===================
+Deze doet het nog niet :') Final solution heeft die boolean onIsControlled niet,
+dus dat maakt checken wat er nou is iets lastiger misschien
+*/
+
 const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args))
 const noop = () => {}
 
@@ -48,12 +55,10 @@ function useToggle({
   }
 
   function toggle() {
-    // 🐨 instead of all this, we can now just call our `dispatchWithOnChange`
     dispatchWithOnChange({action: useToggle.types.toggle})
   }
 
   function reset() {
-    // 🐨 instead of all this, we can now just call our `dispatchWithOnChange`
     dispatchWithOnChange({action: useToggle.types.reset, initialState})
   }
 

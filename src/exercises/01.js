@@ -10,6 +10,7 @@ function Toggle({onToggle}) {
   // on is de variabele die state bevat
   //updateOn is de functie die state update
 
+  //  Mijn aantekeningen:
   // Kent gebruikt geen arrow functions omdat het dan niet uitmaakt waar de functie staat,
   // boven of onderin de plek waar de functie wordt aangeroepen.
   // Zelf gebruik ik arrow functions in classes omdat ik dan de this gebind is.

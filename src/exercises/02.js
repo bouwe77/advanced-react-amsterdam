@@ -41,8 +41,10 @@ function Toggle({onToggle, children}) {
 
   /*
 Mijn aantekeningen:
-Die twee linkjes bekijken reactchildren en cloneelement.
-Verder zijn die 3 Toggle.On, Toggle.Off en Toggle.Button arrow functions. En ik weet niet waarom...
+===================
+Die twee linkjes bekijken: reactchildren en cloneelement.
+Verder zijn die 3 Toggle.On, Toggle.Off en Toggle.Button arrow functions. 
+Daar kan ik vast ook "gewone" functions van maken?
 Het gebruik van de components zit in de Usage function, daar zie je dat je ze nest zeg maar.
 */
 

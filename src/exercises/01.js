@@ -11,11 +11,15 @@ function Toggle({onToggle}) {
   //updateOn is de functie die state update
 
   //  Mijn aantekeningen:
+  //=====================
   // Kent gebruikt geen arrow functions omdat het dan niet uitmaakt waar de functie staat,
   // boven of onderin de plek waar de functie wordt aangeroepen.
   // Zelf gebruik ik arrow functions in classes omdat ik dan de this gebind is.
   // Bovendien heeft hij nog nooit class components gemaakt (als ik het goed heb begrepen)
   // Met hooks hoeft dat ook niet meer natuurlijk? Voor mjn workshop: heeft het nog nut om class components te maken?
+  //
+  // Downshift bekijken, is van Kent
+  //
   function toggle() {
     const newOn = !on
     updateOn(newOn)

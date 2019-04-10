@@ -31,12 +31,6 @@ function useToggle({onToggle = noop} = {}) {
   }
 
   function getTogglerProps({onClick, ...rest} = {}) {
-    // 🐨 this function should return an object with the same properties as the
-    // togglerProps object, except it should also accept a "props" object and
-    // merge the two together.
-    // 🦉 The trick here is you need to merge the onClick you're passed with
-    // the one we need applied.
-
     return {
       'aria-pressed': on,
       onClick: callAll(onClick, toggle),
@@ -51,6 +45,14 @@ function useToggle({onToggle = noop} = {}) {
   }
 }
 
+/*
+Mijn aantekeningen:
+===================
+Deze doet het niet, terwijl mijn code volgens mij wel goed is.
+Kan ook aan CodeSandbox liggen
+Het probleem is dat ik de console.log met "onButtonClick" niet zie... :()
+*/
+
 ////////////////////////////////////////////////////////////////////
 //                                                                //
 //                 Don't make changes below here.                 //
@@ -60,7 +62,7 @@ function useToggle({onToggle = noop} = {}) {
 
 function Usage() {
   const {on, getTogglerProps} = useToggle({
-    onToggle: (...args) => console.info('onToggle', ...args),
+    onToggle: (...args) => console.log('onToggle', ...args),
   })
   return (
     <div>

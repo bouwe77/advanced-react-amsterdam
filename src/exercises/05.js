@@ -46,7 +46,7 @@ function useToggle({onToggle = noop} = {}) {
 // But do look at it to see how your code is intended to be used. //
 //                                                                //
 ////////////////////////////////////////////////////////////////////
-
+//hoi
 function Usage() {
   const {on, togglerProps} = useToggle({
     onToggle: (...args) => console.info('onToggle', ...args),
